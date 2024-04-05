@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake, Water and Gun Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="text">
+            <h1>Snake, Water and Gun Game</h1>
+        </div>
+
+        <div class="game-container">
+            <h2>Choose any of these</h2>
+            <div class="container">
+                <div class="card" id="snake">
+                    <img src="images/snake.webp" alt="snake">
+                </div>
+                <div class="card" id="gun">
+                    <img src="images/gun.webp" alt="gun">
+                </div>
+                <div class="card" id="water">
+                    <img src="images/water.webp" alt="water">
+                </div>
+            </div>
+        </div>
+
+        <div class="result-box">
+            <div class="result-card">
+                <div class="card">
+                    <img src="" alt="">
+                </div>
+                <div id="player">
+                    You
+                </div>
+            </div>
+
+            <div class="gameState">Draw</div>
+
+            <div class="result-card result-card-2">
+                <div class="card">
+                    <img src="" alt="">
+                </div>
+                <div id="computer">
+                    Computer
+                </div>
+            </div>
+        </div>
+
+        <div class="rules">
+            <h3>Snake dies from Gun</h3>
+            <h3>Gun dies from Water</h3>
+            <h3>Water dies from Snake</h3>
+        </div>
+
+        <div class="btn-container">
+            <h4 class="btn" id="playGame" onclick="playGame()">Play Game</h4>
+            <h4 class="btn" id="playAgain" onclick="tryAgain()">Play Again</h4>
+            <h4 class="btn" id="home" onclick="returnHome()">Back</h4>
+            <h4 class="btn" id="rules" onclick="showRules()">Rules</h4>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+
+</html>
