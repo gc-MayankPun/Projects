@@ -11,32 +11,36 @@ let resultBox = document.getElementsByClassName("result-box")[0]; // Getting the
 let rules = document.getElementsByClassName("rules")[0]; // Getting the first element with class "rules"
 
 // Player Inputs
-let snake = document.getElementById("snake");
-let gun = document.getElementById("gun");
-let water = document.getElementById("water");
+let scissor = document.getElementById("scissor");
+let rock = document.getElementById("rock");
+let paper = document.getElementById("paper");
 let playerChoice;
 
-// These will only give the values of snake, gun and water only if the user have clicked on them otherwise it will return undefined
+// Scores
+let won = 0;
+let highScore = parseInt(localStorage.getItem("highScore")) || 0;
+
+// These will only give the values of scissor, rock and paper only if the user have clicked on them otherwise it will return undefined
 // Here the class is being added and remove according to the user input 
-snake.addEventListener("click", () => {
-    playerChoice = "snake";
-    snake.classList.add("input");
-    gun.classList.remove("input");
-    water.classList.remove("input");
+scissor.addEventListener("click", () => {
+    playerChoice = "scissor";
+    scissor.classList.add("input");
+    rock.classList.remove("input");
+    paper.classList.remove("input");
 })
 
-gun.addEventListener("click", () => {
-    playerChoice = "gun";
-    gun.classList.add("input");
-    snake.classList.remove("input");
-    water.classList.remove("input");
+rock.addEventListener("click", () => {
+    playerChoice = "rock";
+    rock.classList.add("input");
+    scissor.classList.remove("input");
+    paper.classList.remove("input");
 })
 
-water.addEventListener("click", () => {
-    playerChoice = "water";
-    water.classList.add("input");
-    gun.classList.remove("input");
-    snake.classList.remove("input");
+paper.addEventListener("click", () => {
+    playerChoice = "paper";
+    paper.classList.add("input");
+    rock.classList.remove("input");
+    scissor.classList.remove("input");
 })
 
 // Function to handle playing the game
@@ -59,44 +63,65 @@ function playGame() {
         gameState.innerHTML = `
         ${state}
         `
+
+        // Setting score values
+        document.querySelector("#your-score span").innerHTML = won;
+        document.querySelector("#high-score span").innerHTML = highScore;
     }
 }
 
+document.querySelector("#high-score span").innerHTML = highScore;
+document.addEventListener("keydown", (event) => {
+    if(event.key == 'Escape'){
+        console.log("cleared!");
+        localStorage.removeItem("highScore");
+        highScore = 0;
+        document.querySelector("#high-score span").innerHTML = highScore;
+    }
+})
+
 function checkState(player, computer, state) {
     if (player == state) {
+        won++;
+        if (won > highScore) {
+            highScore = won;
+            localStorage.setItem("highScore", highScore);
+        }
         return "You Won"
     }
     else if (computer == state) {
+        won = 0;
         return "Computer Won"
     }
     else {
+        won = 0;
         return "Draw"
     }
 }
 
 function checkInput(player, computer) {
-    // For snake
-    if (player == "snake" && computer == "gun") {
-        return "gun";
+    // For scissor
+    if (player == "scissor" && computer == "rock") {
+        return "rock";
     }
-    else if (player == "snake" && computer == "water") {
-        return "snake";
-    }
-
-    // For gun 
-    else if (player == "gun" && computer == "water") {
-        return "water";
-    }
-    else if (player == "gun" && computer == "snake") {
-        return "gun";
+    else if (player == "scissor" && computer == "paper") {
+        return "scissor";
     }
 
-    // For water 
-    else if (player == "water" && computer == "gun") {
-        return "water";
+    // For rock
+    else if (player == "rock" && computer == "paper") {
+        return "paper";
     }
-    else if (player == "water" && computer == "snake") {
-        return "snake";
+    else if (player == "rock" && computer == "scissor") {
+        return "rock";
+    }
+
+    // For paper 
+    else if (player == "paper" && computer == "rock") {
+        return "paper";
+    }
+    else if (player == "paper" && computer == "scissor") {
+        return "scissor";
     }
 
     // For draw
@@ -110,7 +135,7 @@ function playerInput(playerChoice) {
     let card = document.createElement("div");
     card.innerHTML = `
     <div class="card">
-        <img src="images/${playerChoice}.webp" alt="${playerChoice}">
+        <img src="images/${playerChoice}.png" alt="${playerChoice}">
     </div>
     `
     resultCard.appendChild(card);
@@ -118,14 +143,14 @@ function playerInput(playerChoice) {
 
 function computerInput() {
     let rand = Math.floor(Math.random() * 3);
-    let choices = ["snake", "gun", "water"];
+    let choices = ["scissor", "rock", "paper"];
     let computerChoosed = choices[rand];
 
     let resultCard = document.getElementsByClassName("result-card")[1];
     let card = document.createElement("div");
     card.innerHTML = `
     <div class="card">
-        <img src="images/${computerChoosed}.webp" alt="${computerChoosed}">
+        <img src="images/${computerChoosed}.png" alt="${computerChoosed}">
     </div>
     `
     resultCard.appendChild(card);

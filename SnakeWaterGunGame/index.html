@@ -4,27 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake, Water and Gun Game</title>
+    <title>Rock, Paper and Scissor Game</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body>
+<body> 
+    <div id="score-board">
+        <div id="your-score">Score: <span>0</span></div>
+        <div id="high-score">Win Streak: <span>0</span></div>
+    </div>
     <div class="main">
         <div class="text">
-            <h1>Snake, Water and Gun Game</h1>
+            <h1>Rock, Paper and Scissor Game</h1>
         </div>
 
         <div class="game-container">
             <h2>Choose any of these</h2>
             <div class="container">
-                <div class="card" id="snake">
-                    <img src="images/snake.webp" alt="snake">
+                <div class="card" id="rock">
+                    <img src="images/rock.png" alt="rock">
                 </div>
-                <div class="card" id="gun">
-                    <img src="images/gun.webp" alt="gun">
+                <div class="card" id="paper">
+                    <img src="images/paper.png" alt="paper">
                 </div>
-                <div class="card" id="water">
-                    <img src="images/water.webp" alt="water">
+                <div class="card" id="scissor">
+                    <img src="images/scissor.png" alt="scissor">
                 </div>
             </div>
         </div>
@@ -52,9 +56,9 @@
         </div>
 
         <div class="rules">
-            <h3>Snake dies from Gun</h3>
-            <h3>Gun dies from Water</h3>
-            <h3>Water dies from Snake</h3>
+            <h3>Rock dies from Paper</h3>
+            <h3>Paper dies from Scissor</h3>
+            <h3>Scissor dies from Rock</h3>
         </div>
 
         <div class="btn-container">

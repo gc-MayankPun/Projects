@@ -8,17 +8,34 @@
 }
 
 :root {
-    --primary-color: #1A1A1A;
-    --secondary-color: white;
-    --card-color: rgb(6, 21, 41);
-    --choosed-color: rgb(30, 66, 114);
-    --btn-color: white
+    --primary-color: #1A2835;
+    --secondary-color: #FFFFFF;
+    --card-color: #283C54;
+    --choosed-color: #4C4CFF;
+    --btn-color: #1E365F;
+    --btn-text-color: #FFFFFF;
+    --btn-hover-color: #4C4CFF;
+    --btn-hover-text-color: #FFFFFF;
 }
 
 html,
 body {
     height: 100%;
     width: 100%;
+}
+
+#score-board {
+    position: absolute;
+    top: 0;
+    color: var(--secondary-color);
+    /* background-color: red; */
+    /* width: 100%; */
+    padding: 0 0.5vw;
+    font-size: 1.2vw;
+}
+
+#your-score {
+    margin: 1vw 0;
 }
 
 .main {
@@ -117,7 +134,7 @@ body {
 
 .btn {
     background-color: var(--btn-color);
-    color: black;
+    color: var(--btn-text-color);
     padding: 0.5vw 1vw;
     border-radius: 8px;
     font-size: 1vw;
@@ -134,11 +151,16 @@ body {
 }
 
 .btn:hover {
-    color: white;
-    background-color: black;
+    color: var(--btn-hover-text-color);
+    background-color: var(--btn-hover-color);
 }
 
 @media (max-width: 1024px) {
+    #score-board {
+        font-size: 3vw;
+        padding: 2vw 4vw;
+    }
+
     .main {
         display: flex;
         flex-direction: column;
@@ -192,6 +214,11 @@ body {
 }
 
 @media (max-width: 600px) {
+    #score-board {
+        font-size: 4vw;
+        padding: 2vw 4vw;
+    }
+
     .main .text h1 {
         font-size: 5vw;
     }
